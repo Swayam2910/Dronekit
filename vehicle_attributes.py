@@ -1,12 +1,6 @@
-print("Start simulator (SITL)")
-import dronekit_sitl
-sitl = dronekit_sitl.start_default()
-connection_string = sitl.connection_string()
-
-
 from dronekit import connect,VehicleMode
 
-vehicle=connect(connection_string,wait_ready=True)
+vehicle=connect('127.0.0.1:14550',wait_ready=True)
 
 #some attributes of vehicle.
 print ("Global Location: %s" % (vehicle.location.global_frame))
@@ -20,5 +14,3 @@ print ("Gimbal status: %s" % (vehicle.gimbal))
 print("Armed? %s" %(vehicle.armed))
 
 vehicle.close()
-
-sitl.stop()
